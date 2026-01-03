@@ -1,0 +1,191 @@
+:root{
+  --bg:#0b0b0b;
+  --accent:#53a7ff;
+  --muted:#9aa6b2;
+  --title-size:clamp(36px,7vw,120px);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: "Orbitron", "Audiowide", system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+  background:var(--bg);
+  color:#e6eef8;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* Header */
+.site-header{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  padding:.75rem 1rem;
+  display:flex;
+  align-items:center;
+  z-index:50;
+  pointer-events:none;
+}
+.site-title{
+  margin:0;
+  font-size:1rem;
+  letter-spacing:0.08em;
+  text-transform:lowercase;
+  color: #cfe8ff;
+  font-weight:700;
+  pointer-events:auto;
+}
+
+/* HERO with layered art */
+.hero{
+  min-height:100vh;
+  display:grid;
+  place-items:center;
+  position:relative;
+  overflow:hidden;
+}
+
+/* art layers reference your uploaded images */
+/* Replace img1.jpg / img2.jpg / img3.jpg with your real filenames if different */
+
+.art-layer{
+  position:absolute;
+  inset:0;
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size:cover;
+  transition:transform 1s ease;
+  mix-blend-mode:screen;
+  opacity:.9;
+  filter:contrast(1.05) saturate(1.05);
+}
+
+/* back: deep planet-ish (Image 1) */
+.layer-back{
+  background-image: url("img1.jpg");
+  transform:scale(1.05) translateZ(-200px);
+  opacity:.5;
+  mix-blend-mode:screen;
+  filter: hue-rotate(-15deg) contrast(1.1) saturate(1.1) blur(1px);
+}
+
+/* mid: portrait-glitch (Image 2) */
+.layer-mid{
+  background-image: url("img2.jpg");
+  transform:scale(1.02);
+  opacity:.75;
+  mix-blend-mode:color-dodge;
+  filter:contrast(1.15) saturate(1.4);
+}
+
+/* front: chrome logo / ornament (Image 3) */
+.layer-front{
+  background-image: url("img3.jpg");
+  transform:scale(1);
+  opacity:1;
+  mix-blend-mode:overlay;
+  filter:brightness(.95) contrast(1.1);
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.2) 85%, rgba(0,0,0,0) 100%);
+}
+
+/* HERO content */
+.hero-content{
+  position:relative;
+  z-index:40;
+  text-align:center;
+  padding:2rem;
+  max-width:900px;
+  margin:auto;
+}
+
+/* Chrome-style title (large) */
+.hero-title{
+  margin:0 auto 0.6rem;
+  font-size:var(--title-size);
+  line-height:0.9;
+  letter-spacing:-0.02em;
+  text-transform:lowercase;
+  color:transparent;
+  background: linear-gradient(90deg,#e6f5ff 0%, #b6d8ff 35%, #b6f0ff 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  text-shadow:
+    0 2px 0 rgba(0,0,0,.6),
+    0 10px 30px rgba(0,0,0,.8);
+  filter:drop-shadow(0 6px 18px rgba(0,0,0,.9));
+  font-weight:700;
+  font-family: "Audiowide", "Orbitron", sans-serif;
+  position:relative;
+}
+
+/* glitch layers using pseudo elements */
+.hero-title::before,
+.hero-title::after{
+  content:attr(data-text);
+  position:absolute;
+  inset:0;
+  left:0;
+  width:100%;
+  color:inherit;
+  -webkit-background-clip:text;
+  background-clip:text;
+  opacity:.9;
+  mix-blend-mode:screen;
+  pointer-events:none;
+}
+.hero-title::before{
+  transform:translateX(-2px);
+  clip-path:polygon(0 0,100% 0,100% 45%,0 45%);
+  filter:hue-rotate(-10deg) saturate(1.2) blur(.6px);
+}
+.hero-title::after{
+  transform:translateX(2px);
+  clip-path:polygon(0 55%,100% 55%,100% 100%,0 100%);
+  filter:hue-rotate(10deg) saturate(1.1) blur(.6px);
+}
+
+/* kicker text */
+.kicker{
+  color:var(--muted);
+  margin:.6rem 0 1.2rem;
+}
+
+/* buttons */
+.actions{display:flex; gap:1rem; justify-content:center; flex-wrap:wrap}
+.btn{
+  display:inline-block;
+  padding:.6rem 1.0rem;
+  border-radius:8px;
+  background:linear-gradient(90deg, rgba(83,167,255,.12), rgba(83,167,255,.06));
+  color:#dff2ff;
+  border:1px solid rgba(83,167,255,.18);
+  text-decoration:none;
+  font-weight:600;
+  letter-spacing:.06em;
+  backdrop-filter: blur(4px);
+}
+/* ghost variant */
+.btn.ghost{ background:transparent; border:1px solid rgba(255,255,255,.06) }
+
+/* scanlines overlay */
+.scanlines{
+  position:absolute;
+  inset:0;
+  z-index:45;
+  pointer-events:none;
+  background-image: linear-gradient(rgba(0,0,0,0) 50%, rgba(0,0,0,.08) 51%);
+  background-size:100% 4px;
+  mix-blend-mode:multiply;
+  opacity:.6;
+}
+
+/* footer */
+.site-footer{position:fixed; right:1rem; bottom:1rem; z-index:60; color:var(--muted)}
+
+/* Responsive */
+@media (max-width:720px){
+  .hero-title{font-size: clamp(28px,10vw,64px)}
+  .site-header{padding:.6rem}
+}

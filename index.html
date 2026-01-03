@@ -1,56 +1,44 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>The Sound Department</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>the sound department</title>
+
+  <!-- Google fonts (retro / techno) -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Audiowide&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <div class="page-wrap">
+    <header class="site-header" role="banner">
+      <h1 class="site-title">the sound department</h1>
+    </header>
 
-<header class="hero">
-  <h1 class="chrome-logo">The Sound Department</h1>
+    <main class="hero" role="main" aria-labelledby="title">
+      <div class="art-layer layer-back" aria-hidden="true"></div>
+      <div class="art-layer layer-mid" aria-hidden="true"></div>
+      <div class="art-layer layer-front" aria-hidden="true"></div>
 
-  <div class="globe-container">
-    <div class="globe"></div>
-    <div class="treble">𝄞</div>
+      <div class="hero-content">
+        <h2 id="title" class="hero-title" data-text="the sound department">the sound department</h2>
+        <p class="kicker">audio design • field recordings • experiments</p>
+
+        <nav class="actions">
+          <a class="btn" href="#work">work</a>
+          <a class="btn ghost" href="#contact">contact</a>
+        </nav>
+      </div>
+
+      <div class="scanlines" aria-hidden="true"></div>
+    </main>
+
+    <footer class="site-footer">
+      <small class="label">the sound department</small>
+    </footer>
   </div>
-</header>
 
-<main>
-
-  <section id="events">
-    <h2>What’s On</h2>
-    <p>Upcoming live shows, club nights & performances.</p>
-    <div class="card">Live Showcase — London — Sept 28</div>
-    <div class="card">Underground Sessions — Berlin — Oct 12</div>
-  </section>
-
-  <section id="blog">
-    <h2>Read Sum</h2>
-    <p>Music culture, interviews, sound experiments.</p>
-    <div class="card">The Future of Live Sound</div>
-    <div class="card">Artist Spotlight: Analog Rebels</div>
-  </section>
-
-  <section id="submit">
-    <h2>Let’s See What You Got</h2>
-    <p>Upload your track for review, press, and video features.</p>
-
-    <form class="upload-form">
-      <input type="text" placeholder="Artist Name" required />
-      <input type="email" placeholder="Email" required />
-      <input type="file" accept="audio/*" required />
-      <button type="submit">Submit Track</button>
-    </form>
-  </section>
-
-</main>
-
-<footer>
-  © The Sound Department
-</footer>
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
